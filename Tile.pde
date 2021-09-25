@@ -1,0 +1,11 @@
+public class Tile {
+  
+public PImage images; 
+public boolean Drawn = false;
+public String Biome = "biome";
+
+  Tile(){
+  images = loadImage("Tile2.png");
+  
+  }
+}
