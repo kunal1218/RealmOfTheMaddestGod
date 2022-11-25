@@ -1,0 +1,13 @@
+public class Menu{
+PImage menu;
+int mX = 965;
+int mY = 0;
+
+void setup(){
+//  menu = loadImage("RealMenu.jpg");
+}
+
+void DisplayMenu(){
+//  image(menu, mX, mY);
+  }
+}
