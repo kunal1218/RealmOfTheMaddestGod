@@ -1,0 +1,24 @@
+public static class DropTable{
+static HashMap<String, HashMap> name = new HashMap<String,HashMap>();
+static String[] Sprites = {"BrownBag.png"}; 
+
+void setup(){
+
+}
+
+static void fillTable(){
+  HashMap<String, Integer> stats = new HashMap<String, Integer>();
+  stats.put("Damage", 10);
+  stats.put("Attack Speed", 5);
+  stats.put("Tier", 1);
+  stats.put("Sprites", 0);
+  HashMap<String, HashMap> weapon = new HashMap<String, HashMap>();
+  weapon.put("sword", stats);
+  name.put("Brown", weapon);
+  }
+  
+static Object[] getItem(String type){
+  Object[] keys = name.get(type).keySet().toArray();
+  return keys;
+  }
+}
