@@ -16,20 +16,21 @@ public class player {
    boolean left = false;
    boolean right = false;
    boolean down = false;
-   int x = 485;
-   int y = 357;
+   int x = 520;
+   int y = 319;
    int totalRight = 0;
    int posX = 0;
    int posY = 0;
-   int xPos;
-   int yPos;
    int mil;
+   int speed = 5;
    int imageNum = 0;
    boolean m = false;
    PImage[] leftImages;
    PImage[] rightImages;
    PImage[] backImages;
    PImage[] frontImages;
+   int xMove = 0;
+   int yMove = 0;
    int tS;
    
    void setup(){
@@ -46,8 +47,8 @@ public class player {
      imgF3 = loadImage("WizardFront3.png");
      imgL2 = loadImage("WizardLeft2.png");
      imgR2 = loadImage("WizardRight2.png");
-     imgSR = loadImage("WizardRightShoot.png");
-     imgSL = loadImage("WizardLeftShoot.png");
+   //  imgSR = loadImage("Obama.png");
+   //  imgSL = loadImage("Obama3.png");
      leftImages = new PImage[2];
      leftImages[0] = imgL;
      leftImages[1] = imgL2;
@@ -59,8 +60,7 @@ public class player {
      backImages[0] = imgB2;
      frontImages = new PImage[2];
      frontImages[0] = imgF3;
-     frontImages[1] = imgF2;
-     
+     frontImages[1] = imgF2;     
    }
    
    void totalMovement(){     
@@ -82,27 +82,37 @@ public class player {
         tS = mil;
       }
       
-     rect(480,357,5,5);
-     
-     
+   //  fill(255); 
+   //  rect(990,660,30,30);   
      image(currentImage, x,y);
-     x = 485;
+     
+     
+   //  System.out.println(posY);
+   //  System.out.println(posX);
+    
+     xMove = 0;
+     yMove = 0;
+     
      if(up == true){
        currentImage = backImages[imageNum];
-       posY += 5;
+       yMove += speed; 
      }
      if(down == true){
        currentImage = frontImages[imageNum];
-       posY -= 5;  
+       yMove -= speed;  
      }
      if(left == true){
       currentImage = leftImages[imageNum];
-       posX += 5;
+       xMove += speed;
      }
      if(right == true){
        currentImage = rightImages[imageNum];
-       posX -= 5;
+       xMove -= speed;
        }
+    
+    posY += yMove;
+    posX += xMove;
+       
     if(m == true){
       if(mouseX > 545){
          if(bulletTimer < 6){
@@ -126,49 +136,47 @@ public class player {
         }
      else{
        currentImage = imgSL;
-       x = x - 33;
-       
-      }
+      // x = x - 33;
+      }                                                                                                              
     }
-  }
+  } 
 }
    
    void keyPressed() {
    if(key == 'w'){
      up = true;
-     down = false;
+   //  down = false;
    }
    if(key == 'a'){
      left = true;
-     right = false;
+   //  right = false;
    }
    if(key == 'd'){
     right = true; 
-    left = false;
+   // left = false;
    }
    if(key == 's'){
     down = true;
-    up = false;
+   // up = false;
      }
    }
    
    void keyReleased(){
    if(key == 'w'){
-     currentImage = imgB;
      up = false;
-     
-     }
+   }
+   
    if(key == 'a'){
-   currentImage = imgL;
    left = false;
    }
+   
    if(key == 'd'){
-   currentImage = imgR;
    right = false;
-     }
+   }
+   
    if(key == 's'){
-    currentImage = imgF;
     down = false;
    }
-   }
+   
+  }
 }
