@@ -1,0 +1,45 @@
+public class EnemyBullet{
+int pX = 517;
+int pY = 389;
+int dx;
+int dy;
+int Dx;
+int Dy; //new
+boolean up;
+boolean down;
+boolean left;
+boolean right;
+PVector v;
+
+EnemyBullet(int xPos, int yPos, int posX, int posY){ //xPos is the pirate's xPos
+this.dx = xPos + 30;
+this.dy = yPos + 30;
+v = new PVector(517 - dx, 389 - dy); 
+v.normalize();
+v.mult(10);
+}
+  
+void update(){
+this.dx += v.x;
+this.dy += v.y;
+}
+
+void drawBullet(int xMove, int yMove){ //x1 is net player movement
+fill(#EA1C1C);
+noStroke();
+circle(this.Dx, this.Dy, 20);
+this.dx += xMove;
+this.dy += yMove;
+this.Dx = this.dx;
+this.Dy = this.dy;
+}
+
+boolean timer(){
+if(dx - pX > 200 || pX - dx > 200 || pY - dy > 200 || dy - pY > 200 ){
+  return false;
+} 
+else{
+  return false;
+    }
+  } 
+}
