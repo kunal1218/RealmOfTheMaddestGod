@@ -1,0 +1,37 @@
+public class Loot{
+PImage BrownBag = loadImage("BrownBag.png");
+PImage BagMenu = loadImage("BagMenu.jpg");
+int x = 0;
+int y = 0;
+int X = 0;
+int Y = 0;
+String type = "";
+ArrayList<Items> Item = new ArrayList<Items>();
+
+void setup(){
+
+}
+ 
+void Itype(){
+   if(int(random(1)) == 0){
+     this.type = "Brown";
+      Items a = new Items();
+      a.generateLoot(this.type);
+      Item.add(a);
+     }
+   }
+
+void displayLoot(int x1, int y1){
+  this.X = this.x + x1;
+  this.Y = this.y + y1;
+  if(type.equals("Brown")){
+   image(this.BrownBag, this.x + x1, this.y + y1);  
+    }
+  }
+
+void displayBagMenu(){
+   image(this.BagMenu, 975, 643);
+   Item.get(0).displayItem(990, 660);
+    
+  }
+} 
