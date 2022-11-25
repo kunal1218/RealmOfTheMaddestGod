@@ -1,0 +1,40 @@
+public class Items{
+ArrayList<DropTable> BrownBag = new ArrayList<DropTable>();
+int Damage = 0;
+int AttackSpeed = 0;
+int Tier = 0;
+String Sprite = "";
+String WeaponType = "";
+PImage Display;
+int imageX;
+int imageY;
+
+void setup(){ 
+  
+}
+
+void displayItem(int x, int y){
+  if(abs(mouseX - (imageX + 16))  < 100 && abs(mouseY - (imageY - 20)) < 100){
+    imageX = mouseX;
+    imageY = mouseY;
+  }
+  else{
+    imageX = x;
+    imageY = y;
+  }
+  image(Display, imageX, imageY); //while not pressed 
+}
+
+
+
+void generateLoot(String type){
+  Object[] ITEM = DropTable.getItem(type);
+  String ItemKey = ITEM[int(random(ITEM.length))].toString();
+  WeaponType = ItemKey;
+  AttackSpeed = ((HashMap<String, Integer>) DropTable.name.get(type).get(ItemKey)).get("Attack Speed");
+  Sprite = DropTable.Sprites[((HashMap<String, Integer>) DropTable.name.get(type).get(ItemKey)).get("Sprites")];
+  Tier = ((HashMap<String, Integer>) DropTable.name.get(type).get(ItemKey)).get("Tier");
+  Damage = ((HashMap<String, Integer>) DropTable.name.get(type).get(ItemKey)).get("Damage");
+  Display = loadImage(Sprite);
+  }
+}
